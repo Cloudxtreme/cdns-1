@@ -1,5 +1,9 @@
+require "rubygems"
+require "bundler/setup"
+
 require "cdns/version"
+require "yaml"
 
 module CDNS
-  # Your code goes here...
+  autoload :GeoIP,   'cdns/geoip'
 end

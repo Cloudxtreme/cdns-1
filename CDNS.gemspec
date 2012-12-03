@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_development_dependency "thor", "~> 0.16.0"
-  gem.add_development_dependency "rspec", "~> 2.12.0"
+  gem.add_dependency "geoip-c",             "~> 0.8.1"
+
+  gem.add_development_dependency "rspec",   "~> 2.12.0"
 end
