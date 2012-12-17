@@ -7,9 +7,8 @@ module CDNS
       attr_reader :store
 
       def zone(code)
-        resource = store.hget "zones", code
-        return Zone.new(resource) if resource 
-        nil
+        resource = store.hget("zones", code)
+        return Zone.new(resource)
       end
 
       def soa(key = nil, value = nil)
@@ -19,7 +18,7 @@ module CDNS
           store.hget "settings.soa", key
         else
           store.hset "settings.soa", key, value
-        end                   
+        end
       end
     end
   end

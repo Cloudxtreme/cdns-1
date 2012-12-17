@@ -19,6 +19,11 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "geoip-c",             "~> 0.8.1"
   gem.add_dependency "redis",               "~> 3.0.2"
+  gem.add_dependency "multi_json",          "~> 1.4.0"
+  gem.add_dependency "yajl-ruby",           "~> 1.1.0"
+  
+  # CLI
+  gem.add_dependency "thor",                "~> 0.16.0"
 
   gem.add_development_dependency "rspec",   "~> 2.12.0"
 end

@@ -7,13 +7,14 @@ module CDNS::DNS
 
     describe "#zone" do
       it "retrive for store" do
+        CDNS::DNS::Zone.stub(:new)
         store.should_receive(:hget).with("zones", 123456)
         subject.zone(123456)
       end
 
       it "return a instance of CDNS::DNS::Zone" do
-        store.stub(:hget).and_return({})
-        expect(subject.zone(123456)).to be_instance_of(CDNS::DNS::Zone)
+        Zone.should_receive(:new).with(store)
+        subject.zone(123456)
       end
     end
 
