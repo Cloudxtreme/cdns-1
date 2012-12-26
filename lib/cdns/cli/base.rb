@@ -1,7 +1,8 @@
-
 module CDNS
   module Cli
-    class Base < ::Thor
+    class Base < Thor
+      include Thor::Actions
+
       protected
         def store
           CDNS.store
