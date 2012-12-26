@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-module CDNS::CLI
+module CDNS::Cli
   class Resource < Base
     include Thor::Actions
     namespace :resource
@@ -23,11 +23,11 @@ module CDNS::CLI
 
     desc "add RESOURCE_ID SOURCE SOURCE_TYPE", "adiciona um novo resource"
     long_desc <<-END
-      RESOURCE_ID: Identificador alphanumerico para o cliente \n
-      SOURCE: IP/FQDN do servidor do cliente \n
+      RESOURCE_ID: Identificador alphanumerico para o cliente \r\n
+      SOURCE: IP/FQDN do servidor do cliente \r\n
       SOURCE_TYPE: A ou CNAME
     END
-    option :nodes, type: :array, aliases: "-d", required: true, desc: "Exemplo: NA SA EU"
+    option :nodes, type: :array, aliases: "-n", required: true, desc: "Exemplo: NA SA EU"
     def add(resource_id, source, source_type)
       data = {
         source: source,

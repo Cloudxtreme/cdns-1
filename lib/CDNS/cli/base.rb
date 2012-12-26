@@ -1,12 +1,11 @@
 
 module CDNS
-  module CLI
+  module Cli
     class Base < ::Thor
-      no_tasks do
+      protected
         def store
           CDNS.store
         end
-      end
     end
   end
 end

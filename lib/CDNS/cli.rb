@@ -1,36 +1,19 @@
 # encoding: UTF-8
-require 'thor'
-require 'redis'
+require 'thor/group'
+
+require 'cdns/cli/base'
+require 'cdns/cli/soa'
+require 'cdns/cli/global'
+require 'cdns/cli/dns'
+require 'cdns/cli/resource'
 
 module CDNS
-  class CLI < Thor
-    include Thor::Actions
-
-    class SOA
-
-    desc "soa:update", "registra/atualiza as informações SOA"
-    method_option :noc
-    method_option :refresh, type: :numeric, default: 86400, lazy_default: true
-    method_option :retry, type: :numeric, default: 7200, lazy_default: true
-    method_option :expire, type: :numeric, default: 3600000, lazy_default: true
-    method_option :minimum, type: :numeric, default: 86400, lazy_default: true
-    def :update
-      options.each do |key, value|
-        store.hset "settings.soa", key, value
-      end
-    end
-
-    desc "soa:show", "exibe a configuração atual"
-    def soa_show
-      print_table store.hgetall("settings.soa")
-    end
-
-    no_tasks do
-      def store
-        @store ||= ::Redis.new
-      end
+  module Cli
+    class Runner < Thor #:nodoc
+      register CDNS::Cli::SOA, :soa, 'soa [COMMAND]', 'Ver ou atualiza informações SOA DNS'
+      register CDNS::Cli::Global, :global, 'global [COMMAND]', 'configuração de variaveis globais (ttl, fallback, etc)'
+      register CDNS::Cli::DNS, :dns, 'dns [COMMAND]', 'configuração referente aos servidores DNS'
+      register CDNS::Cli::Resource, :resource, 'resource [COMMAND]', 'gerencia o resource'
     end
   end
 end
-
-CDNS::CLI.start

@@ -1,11 +1,11 @@
 # encoding: UTF-8
 
-module CDNS::CLI
+module CDNS::Cli
   class Global < Base
     include Thor::Actions
     namespace :global
 
-    desc "global ttl [VALUE]", "mostrar ou atualização o ttl global"
+    desc "ttl [VALUE]", "mostrar ou atualização o ttl global"
     def ttl(value = nil)
       if value.nil?
         say store.hget 'settings.global', 'ttl'

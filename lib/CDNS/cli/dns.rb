@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-module CDNS::CLI
+module CDNS::Cli
   class DNS < Base
     include Thor::Actions
     namespace :dns
@@ -9,7 +9,6 @@ module CDNS::CLI
     option :add, desc: "Adiciona um dominio"
     option :rm, desc: "Remove um dominio"
     def domains
-      print_in_columns store.smembers 'settings.domains' if options.empty?
 
       if options[:add]
         store.sadd 'settings.domains', options[:add]
@@ -20,6 +19,9 @@ module CDNS::CLI
         store.srem 'settings.domains', options[:rm]
         say "Dominio #{options[:rm]} removido com sucesso"
       end
+
+      say " % Dominios cadastrados"
+      print_in_columns store.smembers 'settings.domains' if options.empty?
     end
   end
 end

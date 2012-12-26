@@ -2,7 +2,7 @@
 require 'thor'
 require 'redis'
 
-module CDNS::CLI
+module CDNS::Cli
   class SOA < Base
     include Thor::Actions
     namespace :soa

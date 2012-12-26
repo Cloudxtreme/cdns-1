@@ -5,5 +5,5 @@ require 'bundler/setup'
 
 require 'cdns'
 
-CDNS::CLI::Runner.start
+CDNS::Cli::Runner.start
 

@@ -18,8 +18,8 @@ module CDNS
     autoload :Server,     'cdns/cdn/server'
   end
 
-  module CLI
-    autoload :Runner,     'cdns/cli/runner'
+  module Cli
+    autoload :Runner,     'cdns/cli'
   end
 
   def self.store
